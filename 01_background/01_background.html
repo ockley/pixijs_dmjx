@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Baggrund</title>
+  <script src="../js/pixi.js"></script>
+</head>
+
+<body>
+  <script>
+    var app = new PIXI.Application(1024, 768);
+    document.body.appendChild(app.view);
+
+    // Opret en baggrund
+    var background = PIXI.Sprite.fromImage("img/back1.png");
+    background.width = app.renderer.width;
+    background.height = app.renderer.height;
+    app.stage.addChild(background);
+
+  </script>
+</body>
+</html>

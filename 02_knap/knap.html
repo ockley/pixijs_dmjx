@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Knap eksempel</title>
+  <script src="../js/pixi.js"></script>
+</head>
+
+<body>
+  <script>
+    var app = new PIXI.Application();
+    document.body.appendChild(app.view);
+
+
+    // Teksturer til knapper fra billeder
+    var textureButton = PIXI.Texture.fromImage("img/button.png");
+
+    var button = new PIXI.Sprite(textureButton);
+
+    // Placer knappen på scenen
+    button.anchor.set(0.5);
+    button.x = 400;
+    button.y = 100;
+    app.stage.addChild(button);
+
+    // Gør knappen interaktiv
+    button.interactive = true;
+    button.buttonMode = true;
+
+    // Sæt listeners på knappen
+    button.on('pointerup', btnClicked)
+
+
+    function btnClicked(event) {
+      console.log("click");
+
+    }
+
+
+  </script>
+</body>
+</html>
