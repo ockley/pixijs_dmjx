@@ -1,0 +1,46 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Animation start</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<script src="../pixi.js"></script>
+  <script>
+      var speedX = 2;
+      var speedY = 5;
+      
+	  var app = new PIXI.Application(800, 600);
+	  document.body.appendChild(app.view);
+      app.stage.interactive = true;
+      
+      // Opret et Graphics objekt
+      var circle = new PIXI.Graphics();
+      circle.beginFill(0x6633FF);
+      circle.lineStyle(10, 0x003366, 1);
+      circle.drawCircle(0,0, 100, 100);
+      circle.endFill();
+      app.stage.addChild(circle);
+      
+      app.ticker.add(function(){
+          circle.x += speedX;
+          circle.y += speedY;
+          
+          if(circle.x <= 0 || circle.x >= app.renderer.width) {
+              speedX *= -1;
+          }
+          if(circle.y <= 0 || circle.y >= app.renderer.height) {
+              speedY *= -1;
+          }
+          
+      });
+	   
+  </script>
+</body>
+</html>

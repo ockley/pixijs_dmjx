@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+
+	<script src="../pixi.js"></script>
+	<script src="../TweenMax.js"></script>
+  <script>
+	  var app = new PIXI.Application(800, 600, {backgroundColor: 0x1099bb});
+	  document.body.appendChild(app.view);
+	  
+	  var circle = new PIXI.Graphics();
+	  circle.beginFill(0x990000);
+	  circle.drawCircle(0,0,100, 100);
+	  circle.endFill();
+	  app.stage.addChild(circle);
+	  
+	  app.stage.interactive = true;
+	  app.stage.hitArea = app.screen;
+	  app.stage.on('mouseup', function(){
+		  TweenMax.to(circle, 2, {x:app.renderer.width, ease:Bounce.easeOut});
+	  });
+  </script>
+</body>
+</html>

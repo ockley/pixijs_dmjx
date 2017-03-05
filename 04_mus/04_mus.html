@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Mus eksempel</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<script src="../pixi.js"></script>
+  <script>
+	  var app = new PIXI.Application(1024, 768);
+	  document.body.appendChild(app.view);
+      
+      app.stage.hitArea = app.screen;
+      app.stage.interactive = true;
+      
+      app.stage.on('mousemove', function(event) {
+          const mousex = event.data.global.x;
+          const mousey = event.data.global.y;
+          console.log(mousex, mousey);
+      });
+      
+	   
+  </script>
+</body>
+</html>
