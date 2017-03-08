@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.4.1/pixi.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+</head>
+
+<body>
+  <script>
+  var app = new PIXI.Application(800, 600, {backgroundColor:0x333333});
+    document.body.appendChild(app.view);
+
+    var rektangel = new PIXI.Graphics();
+    rektangel.beginFill(0x66FF55);
+    rektangel.drawRoundedRect(30, 42, 70, 49, 10);
+    rektangel.endFill();
+    app.stage.addChild(rektangel);
+
+    rektangel.interactive = true;
+    rektangel.on('mouseover', function(){
+      TweenMax.to(rektangel, 1, {x:200, y:301, ease:Elastic.easeInOut, repeat:3, yoyo:true});
+    });
+
+
+  </script>
+
+</body>
+</html>

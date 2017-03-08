@@ -8,56 +8,56 @@
 
 <body>
 
-	<script src="../pixi.js"></script>
-	<script src="../TweenMax.js"></script>
+  <script src="../js/pixi.js"></script>
+  <script src="../js/TweenMax.js"></script>
   <script>
-	  let mouse = new PIXI.Point(0,0);
-	  let anim;
-	  var app = new PIXI.Application(800, 600, {backgroundColor: 0x1099bb});
-	  document.body.appendChild(app.view);
-	  
-	  PIXI.loader
-	  .add('sheet.json')
-	  .load(onAssetsLoaded);
-	  
-	  function onAssetsLoaded() {
-		  var frames = [];
-		  
-		  for(var i = 0; i < 85; i++) {
-			var val = i < 10 ? '0' + i : i;
-			frames.push(PIXI.Texture.fromFrame('video_2.mp4 100'+val));
-		  }
-		  anim = new PIXI.extras.AnimatedSprite(frames);
-		  anim.x = app.renderer.width/2;
-		  anim.y = app.renderer.height/2;
-		  anim.anchor.set(0.5);
-		  //anim.play();
-		  
-		  app.stage.addChild(anim);
-	  
+    let mouse = new PIXI.Point(0,0);
+    let anim;
+    var app = new PIXI.Application(800, 600, {backgroundColor: 0x1099bb});
+    document.body.appendChild(app.view);
+
+    PIXI.loader
+    .add('sheet.json')
+    .load(onAssetsLoaded);
+
+    function onAssetsLoaded() {
+      var frames = [];
+
+      for(var i = 0; i < 85; i++) {
+      var val = i < 10 ? '0' + i : i;
+      frames.push(PIXI.Texture.fromFrame('video_2.mp4 100'+val));
       }
-	  
-	  app.stage.interactive = true;
-	  app.stage.hitArea = app.screen;
-	  
-	  app.stage.on('mousemove', function(event) {
+      anim = new PIXI.extras.AnimatedSprite(frames);
+      anim.x = app.renderer.width/2;
+      anim.y = app.renderer.height/2;
+      anim.anchor.set(0.5);
+      //anim.play();
+
+      app.stage.addChild(anim);
+
+      }
+
+    app.stage.interactive = true;
+    app.stage.hitArea = app.screen;
+
+    app.stage.on('mousemove', function(event) {
           mouse.x = event.data.global.x;
           mouse.y = event.data.global.y;
-	  });
-	  
-	  app.ticker.add(function(){
-		  var actFrame = Math.floor(map(mouse.x, 0, app.renderer.width, 0, 84));
-		  
-		  if(anim) {
-			  anim.gotoAndStop(actFrame);
-		  }
-	  });
-	  
-	  function map(val, inMin, inMax, outMin, outMax) {
-		  var ratio = (val - inMin) / (inMax - inMin);
-		  var retVal = (outMax - outMin) * ratio;
-		  return retVal + outMin;
-	  }
+    });
+
+    app.ticker.add(function(){
+      var actFrame = Math.floor(map(mouse.x, 0, app.renderer.width, 0, 84));
+
+      if(anim) {
+        anim.gotoAndStop(actFrame);
+      }
+    });
+
+    function map(val, inMin, inMax, outMin, outMax) {
+      var ratio = (val - inMin) / (inMax - inMin);
+      var retVal = (outMax - outMin) * ratio;
+      return retVal + outMin;
+    }
   </script>
 </body>
 </html>
